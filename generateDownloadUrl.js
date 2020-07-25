@@ -4,15 +4,17 @@ let sp = PropertiesService.getScriptProperties();
 // Googleスプレッドシート情報
 const SHEET_ID = sp.getProperty('SHEET_ID');
 const SHEET_NAME = sp.getProperty('SHEET_NAME');
+
+// GoogleDrive情報
 const DRIVE_ID = sp.getProperty('DRIVE_ID');
 
 // Google ドライうのファイルを、スプレッドシートにクリックするだけでDL可能にしたリンクを転記
 function genDownloadUrl() {
     let ss = SpreadsheetApp.openById(SHEET_ID);
     let sheet = ss.getSheetByName(SHEET_NAME);
-
     let firstRow = 2;
 
+    // Googleドライブの特定フォルダに保存されているファイルを取得
     let files = DriveApp.getFolderById(DRIVE_ID).getFiles();
     while (files.hasNext()) {
         let file = files.next();
