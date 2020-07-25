@@ -35,7 +35,7 @@ function remindPostForHistoryLog() {
             let _inputDate = Utilities.formatDate(getDate, "Asia/Tokyo", "yyyy/MM/dd");
             let inputDate = Date.parse(_inputDate);
 
-            // 「最新の追記された日付」と「3日前」の日付を比較して結果で分岐
+            // 「3日前(dateForCheck)」より「追記された日付(inputDate)」が新しいなら goodとしたい
             if (dateForCheck <= inputDate) {
                 let result = sheetName + ", good!";
                 Logger.log(result);
